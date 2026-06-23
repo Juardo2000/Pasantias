@@ -1,0 +1,58 @@
+Aquí tienes un resumen de las licitaciones públicas y convocatorias recientes en Colombia relacionadas con la "investigación de tecnología", organizadas según tus criterios:
+
+---
+
+### 1. Convocatoria ColombIA Inteligente 2026
+
+*   **Nombre de la licitación:** Convocatoria ColombIA Inteligente 2026.
+*   **Entidad convocante:** Ministerio de Ciencia, Tecnología e Innovación (MinCiencias).
+*   **Fechas clave:** La convocatoria fue abierta el 18 de marzo de 2026, con una fecha de apertura mencionada como el viernes 13 de marzo de 2026 para la convocatoria 976. No se especifica una fecha de cierre en los fragmentos proporcionados, pero se menciona un cronograma.
+*   **Monto o presupuesto:** La iniciativa destinará 24 mil millones de pesos colombianos (COP 24,000,000,000) para financiar proyectos. Una inversión inicial de $9.400 millones fue mencionada para la apertura de la convocatoria.
+*   **Requisitos básicos:** La convocatoria busca financiar proyectos de investigación aplicada, desarrollo tecnológico e innovación basados en Inteligencia Artificial (IA) y Ciencias y Tecnologías Cuánticas. Estos proyectos deben estar orientados a resolver problemáticas específicas de los territorios y a fortalecer las capacidades científicas del país. También se busca la vinculación de jóvenes investigadores e innovadores, semilleros de investigación y la apropiación social y divulgación de la ciencia.
+*   **Enlace de la fuente original:**
+    *   DPL News:
+    *   MinCiencias:
+
+### 2. Convocatoria para cofinanciar proyectos de Investigación Aplicada, Desarrollo Tecnológico e Innovación con TIC en sectores estratégicos
+
+*   **Nombre de la licitación:** Convocatoria para cofinanciar proyectos de Investigación Aplicada, Desarrollo Tecnológico e Innovación con TIC en sectores estratégicos orientados al mejoramiento de la productividad y competitividad del sector TIC. Número: 789.
+*   **Entidad convocante:** Ministerio de Ciencia, Tecnología e Innovación (MinCiencias).
+*   **Fechas clave:** No se especifican fechas de apertura o cierre en los fragmentos de búsqueda.
+*   **Monto o presupuesto:** No se especifica un monto total en los fragmentos de búsqueda.
+*   **Requisitos básicos:** El objetivo es cofinanciar proyectos de investigación aplicada, desarrollo tecnológico e innovación que contribuyan a la solución de problemas o necesidades reales en sectores estratégicos. Esto se logrará a través de la generación, adaptación, dominio y utilización de nuevos productos y servicios de tecnologías de la información y las comunicaciones (TIC).
+*   **Enlace de la fuente original:** MinCiencias:
+
+### 3. Mínima Cuantía 39 DE 2025 - Adquisición de insumos y equipos electrónicos para investigación
+
+*   **Nombre de la licitación:** Mínima Cuantía 39 DE 2025.
+*   **Entidad convocante:** Instituto Tecnológico Metropolitano (ITM).
+*   **Fechas clave:** Convocatoria del año 2025. No se especifican fechas exactas de apertura o cierre en los fragmentos.
+*   **Monto o presupuesto:** No se especifica un monto en los fragmentos.
+*   **Requisitos básicos:** Adquisición de insumos y equipos electrónicos necesarios para el desarrollo de actividades científicas y tecnológicas en el marco del proyecto de investigación pf24219, adscrito a la dirección de investigación del ITM.
+*   **Enlace de la fuente original:** ITM:
+
+### 4. Mínima Cuantía 103 DE 2025 - Soluciones tecnológicas interactivas para aulas híbridas
+
+*   **Nombre de la licitación:** Mínima Cuantía 103 DE 2025.
+*   **Entidad convocante:** Instituto Tecnológico Metropolitano (ITM).
+*   **Fechas clave:** Convocatoria del año 2025. No se especifican fechas exactas de apertura o cierre en los fragmentos.
+*   **Monto o presupuesto:** No se especifica un monto en los fragmentos.
+*   **Requisitos básicos:** Adquisición e instalación de soluciones tecnológicas interactivas para la dotación y puesta en funcionamiento de dos aulas híbridas interactivas. Esto se enmarca en el proyecto “MATELAB: Aula Experimental de Pensamiento Matemático”, buscando fortalecer procesos de acompañamiento académico y psicosocial, y promover el desarrollo del pensamiento lógico-matemático y habilidades para la vida de los estudiantes del ITM. La contratación se realiza bajo un convenio con el Ministerio de Educación Nacional (MEN) y el Banco Interamericano de Desarrollo (BID).
+*   **Enlace de la fuente original:** ITM:
+
+### 5. Mínima Cuantía 96 DE 2025 - Sistema solar fotovoltaico para proyecto de investigación
+
+*   **Nombre de la licitación:** Mínima Cuantía 96 DE 2025.
+*   **Entidad convocante:** Instituto Tecnológico Metropolitano (ITM).
+*   **Fechas clave:** Convocatoria del año 2025. No se especifican fechas exactas de apertura o cierre en los fragmentos.
+*   **Monto o presupuesto:** No se especifica un monto en los fragmentos.
+*   **Requisitos básicos:** Adquisición de un sistema solar fotovoltaico completo, incluyendo todos los componentes para su instalación, operación segura y funcionamiento. Esto se enmarca en el proyecto RC-130-2024, adscrito a la dirección de investigación del ITM.
+*   **Enlace de la fuente original:** ITM:
+
+---
+
+**Contexto adicional sobre Contratación Pública en Tecnología e Innovación en Colombia:**
+
+La contratación pública en Colombia es una herramienta estratégica para el Estado, representando aproximadamente el 15.8% del PIB, y juega un papel fundamental en el fomento de la economía y el desarrollo del capital físico y humano. El Ministerio de Ciencia, Tecnología e Innovación (MinCiencias) es una entidad clave que promueve el desarrollo científico, tecnológico e innovador en el país, ofreciendo convocatorias para investigación básica, aplicada y desarrollo tecnológico. Estas convocatorias suelen estar dirigidas a investigadores, científicos, instituciones académicas, centros de investigación y empresas que desarrollan proyectos de I+D+i.
+
+La contratación pública en el sector tecnológico impulsa la innovación, mejora la eficiencia de los servicios públicos, previene la corrupción y fomenta la competencia entre empresas. Colombia Compra Eficiente (CCE) es la entidad rectora del Sistema de Compra Pública en el país y ha desarrollado estrategias para la innovación. Además, el uso de la inteligencia artificial se está explorando para combatir la corrupción en la contratación estatal, con sistemas como DIARI que buscan hacer un seguimiento constante a los recursos públicos.
