@@ -66,7 +66,7 @@ from google.genai import types
 import datetime
 
 # Autenticación con tu clave directa para la fase de Prototipo (PoC)
-API_KEY = "API KEY AQUI"
+API_KEY = "API KEY AQUI "
 client = genai.Client(api_key=API_KEY)
 
 def enriquecer_lead(nombre, correo, empresa):
