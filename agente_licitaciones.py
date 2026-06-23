@@ -65,7 +65,7 @@ import datetime
 # Autenticación con tu clave directa para la fase de Prototipo (PoC)
 API_KEY = "API KEY AQUI"
 client = genai.Client(api_key=API_KEY)
-  
+
 def buscar_licitaciones(sector, pais, palabras_clave):
     print(f"\n🚀 Buscando licitaciones para el sector '{sector}' en {pais}...")
     
