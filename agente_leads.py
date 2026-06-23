@@ -5,7 +5,7 @@ import datetime
 import psycopg2 
 
 # Autenticación con tu clave directa para la fase de Prototipo (PoC)
-API_KEY = "AQ.Ab8RN6IahxemGKkf2fOh5vi7DwEhuvYl5Gyrkj3jg2QS1piTcw"
+API_KEY = "API KEY AQUI"
 client = genai.Client(api_key=API_KEY)
 
 # ⚙️ CONFIGURACIÓN DE TU BASE DE DATOS EN AIVEN (POSTGRESQL)
