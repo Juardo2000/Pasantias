@@ -1,18 +1,20 @@
 from google import genai
 from google.genai import types
 import datetime
-# 🌟 Importamos la librería necesaria para PostgreSQL
+import os
+from dotenv import load_dotenv
 import psycopg2 
 
+load_dotenv()
 # Autenticación con tu clave directa para la fase de Prototipo (PoC)
-API_KEY = "API KEY AQUI"
+API_KEY = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=API_KEY)
 
 # ⚙️ CONFIGURACIÓN DE TU BASE DE DATOS EN AIVEN (POSTGRESQL)
 DB_CONFIG = {
     "dbname": "defaultdb",
     "user": "avnadmin",
-    "password": "AVNS_pj3KkVLaBNj-EQAwJVe",
+    "password": os.environ.get("DB_PASSWORD"),
     "host": "pasantias-proyectogrupo3.l.aivencloud.com",
     "port": "24529",
     "sslmode": "require"  # Obligatorio para conectar con el SSL de Aiven
