@@ -1,28 +1,18 @@
+import os
+import datetime
 from google import genai
 from google.genai import types
-import datetime
-import os
 from dotenv import load_dotenv
-import psycopg2 
 
+# 🌟 IMPORTAMOS EL NUEVO MÓDULO CRUD QUE CREASTE
+import crud_leads
+
+# Cargamos las variables de entorno del archivo .env
 load_dotenv()
-# Autenticación con tu clave directa para la fase de Prototipo (PoC)
+
+# Autenticación segura utilizando la variable de entorno
 API_KEY = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=API_KEY)
-
-# ⚙️ CONFIGURACIÓN DE TU BASE DE DATOS EN AIVEN (POSTGRESQL)
-DB_CONFIG = {
-    "dbname": "defaultdb",
-    "user": "avnadmin",
-    "password": os.environ.get("DB_PASSWORD"),
-    "host": "pasantias-proyectogrupo3.l.aivencloud.com",
-    "port": "24529",
-    "sslmode": "require"  # Obligatorio para conectar con el SSL de Aiven
-}
-
-def conectar_db():
-    """Establece la conexión con PostgreSQL en Aiven."""
-    return psycopg2.connect(**DB_CONFIG)
 
 def enriquecer_lead(nombre, correo, empresa):
     print(f"\n🔍 Investigando fuentes públicas para el lead: {nombre} ({empresa})...")
@@ -51,54 +41,11 @@ def enriquecer_lead(nombre, correo, empresa):
             )
         )
         
-        # 🌟 Eliminamos las líneas que generaban el timestamp y abrían el archivo .txt
         print(f"✅ ¡Análisis completado con éxito por Gemini!")
         return response.text
         
     except Exception as e:
         return f"[Error en el Agente]: {e}"
-
-def guardar_lead_db(nombre, correo, empresa, perfil):
-    """Inserta el nuevo lead enriquecido en la tabla de PostgreSQL."""
-    try:
-        conn = conectar_db()
-        cursor = conn.cursor()
-        query = """
-            INSERT INTO leads (nombre, correo, empresa, perfil_enriquecido) 
-            VALUES (%s, %s, %s, %s);
-        """
-        cursor.execute(query, (nombre, correo, empresa, perfil))
-        conn.commit()
-        cursor.close()
-        conn.close()
-        print("💾 ¡Lead guardado exitosamente en la base de datos de Aiven!")
-    except Exception as e:
-        print(f"❌ Error al guardar en la base de datos: {e}")
-
-def obtener_leads_db():
-    """Recupera todos los leads guardados y los mapea en un diccionario."""
-    leads_dict = {}
-    try:
-        conn = conectar_db()
-        cursor = conn.cursor()
-        cursor.execute("SELECT id, nombre, correo, empresa, perfil_enriquecido FROM leads ORDER BY id ASC;")
-        rows = cursor.fetchall()
-        
-        # Mapeamos usando el índice incremental (1, 2, 3...) como clave del diccionario de selección
-        for indice, row in enumerate(rows, start=1):
-            leads_dict[str(indice)] = {
-                "id_db": row[0],
-                "nombre": row[1],
-                "correo": row[2],
-                "empresa": row[3],
-                "perfil": row[4]
-            }
-        
-        cursor.close()
-        conn.close()
-    except Exception as e:
-        print(f"❌ Error al consultar la base de datos: {e}")
-    return leads_dict
 
 # --------------------------------------------------------------------------
 # INTERFAZ DE MENÚ DE USUARIO
@@ -110,7 +57,7 @@ def menu_principal():
         print("   ⚙️ SISTEMA DE GESTIÓN DE LEADS CON IA")
         print("==================================================")
         print("1) Buscar e Investigar nuevo Lead")
-        print("2) Ver Leads existentes (Base de Datos)")
+        print("2) Ver Leads existentes (Base de Datos / CRUD)")
         print("3) Salir")
         
         opcion = input("\nSeleccione una opción (1-3): ").strip()
@@ -123,7 +70,6 @@ def menu_principal():
             
             perfil_completo = enriquecer_lead(nombre_input, correo_input, empresa_input)
             
-            # Verificamos si la respuesta no es un error
             if perfil_completo and not perfil_completo.startswith("[Error"):
                 print("\n==================================================")
                 print("💼 PERFIL DE COMPAÑÍA Y LEAD ENRIQUECIDO:")
@@ -131,17 +77,18 @@ def menu_principal():
                 print(perfil_completo)
                 print("==================================================")
                 
-                # Permite decidir si guardar o seguir buscando sin almacenar
                 guardar = input("\n¿Desea guardar este lead en la Base de Datos? (s/n): ").strip().lower()
                 if guardar == 's':
-                    guardar_lead_db(nombre_input, correo_input, empresa_input, perfil_completo)
+                    # 🌟 Llamamos a la función usando el módulo crud_leads
+                    crud_leads.guardar_lead_db(nombre_input, correo_input, empresa_input, perfil_completo)
                 else:
                     print("⚠️ Lead no guardado. Volviendo al menú para seguir buscando...")
             else:
                 print(perfil_completo)
                     
         elif opcion == "2":
-            diccionario_leads = obtener_leads_db()
+            # 🌟 Llamamos a la función usando el módulo crud_leads
+            diccionario_leads = crud_leads.obtain_leads_db() if hasattr(crud_leads, 'obtain_leads_db') else crud_leads.obtener_leads_db()
             
             if not diccionario_leads:
                 print("\n📭 No hay leads registrados en la base de datos aún.")
@@ -149,26 +96,44 @@ def menu_principal():
                 
             print("\n--- LEADS EXISTENTES EN EL SISTEMA ---")
             for indice, datos in diccionario_leads.items():
-                print(f"{indice}) {datos['nombre']} — [{datos['empresa']}]")
+                fecha_lista = datos['fecha'].strftime("%d/%m/%Y")
+                print(f"{indice}) {datos['nombre']} — [{datos['empresa']}] ({fecha_lista})")
+                
             print("0) Volver al menú principal")
                 
-            seleccion = input("\nSeleccione el número del lead para ver el reporte: ").strip()
+            seleccion = input("\nSeleccione el número del lead para gestionar: ").strip()
             
             if seleccion == "0":
                 continue
             elif seleccion in diccionario_leads:
                 lead_seleccionado = diccionario_leads[seleccion]
+                fecha_completa = lead_seleccionado['fecha'].strftime("%d/%m/%Y a las %H:%M")
+                
                 print("\n==================================================")
                 print(f"📋 REPORTE DE INTELIGENCIA COMERCIAL (ID HISTÓRICO: {lead_seleccionado['id_db']})")
                 print("==================================================")
                 print(f"👤 Nombre:  {lead_seleccionado['nombre']}")
                 print(f"📧 Correo:  {lead_seleccionado['correo']}")
                 print(f"🏢 Empresa: {lead_seleccionado['empresa']}")
+                print(f"📅 Fecha de registro: {fecha_completa}")
                 print("--------------------------------------------------")
                 print("🔬 INVESTIGACIÓN RETENIDA EN POSTGRESQL:")
                 print(lead_seleccionado['perfil'])
                 print("==================================================")
-                input("\nPresione Enter para continuar...")
+                
+                # Sub-menú de acciones dentro del lead seleccionado (Ver o Eliminar)
+                print("\nACCIONES:")
+                print("1) Volver al listado")
+                print("2) ❌ ELIMINAR este lead del sistema permanentemente")
+                
+                accion = input("\nSeleccione una acción (1-2): ").strip()
+                if accion == "2":
+                    confirmar = input(f"¿Está seguro de borrar a {lead_seleccionado['nombre']}? (s/n): ").strip().lower()
+                    if confirmar == 's':
+                        # 🌟 Llamamos a la función DELETE de nuestro módulo CRUD
+                        crud_leads.eliminar_lead_db(lead_seleccionado['id_db'])
+                else:
+                    print("Volviendo...")
             else:
                 print("❌ Selección inválida.")
                 
